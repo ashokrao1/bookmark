@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:DataServices m:DataServiceVersion="2.0"
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+        <Schema Namespace="PIQ_REQUEST_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+            xmlns:sap="http://www.sap.com/Protocols/SAPData">
+            <EntityType Name="Req_Config" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AppId"/>
+                </Key>
+                <Property Name="AppId" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Application ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContextId" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="GFD Context ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsrScenario" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Scenario for Internal Service Request" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DecisionType" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Header Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreateOptionInd" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Create option ind" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AppDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContextDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="RequestSet" Relationship="PIQ_REQUEST_SRV.AppToRequest" FromRole="FromRole_AppToRequest" ToRole="ToRole_AppToRequest"/>
+            </EntityType>
+            <EntityType Name="Tabs_Config" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ContextId"/>
+                    <PropertyRef Name="TabId"/>
+                    <PropertyRef Name="AppId"/>
+                </Key>
+                <Property Name="ContextId" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="GFD Context ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TabId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Tab ID in the request app" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TabPosition" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TabVisibleInd" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Visible ind" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TabDescription" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AppId" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Application ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Request" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AppId"/>
+                    <PropertyRef Name="ContextId"/>
+                    <PropertyRef Name="DecisionId"/>
+                </Key>
+                <Property Name="AppId" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Application ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContextId" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="GFD Context ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DecisionId" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="Adm. Object ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FormSubmId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Form Submission ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Field01" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Field02" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Field03" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Field04" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Field05" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="HoldSet" Relationship="PIQ_REQUEST_SRV.RequestToHold" FromRole="FromRole_RequestToHold" ToRole="ToRole_RequestToHold"/>
+            </EntityType>
+            <EntityType Name="Hold" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DecisionId"/>
+                    <PropertyRef Name="ContextId"/>
+                    <PropertyRef Name="AppId"/>
+                </Key>
+                <Property Name="DecisionId" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="Adm. Object ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StatusDescription" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContextId" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="GFD Context ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AppId" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Application ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="TYPE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validity" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="FeeCalcDetails" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DecisionId"/>
+                </Key>
+                <Property Name="DecisionId" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="Admission Decision ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FeeType" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Fee type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Total amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PendingAmt" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Pending amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Local Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="AppToRequest" sap:content-version="1">
+                <End Type="PIQ_REQUEST_SRV.Req_Config" Multiplicity="*" Role="FromRole_AppToRequest"/>
+                <End Type="PIQ_REQUEST_SRV.Request" Multiplicity="*" Role="ToRole_AppToRequest"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_AppToRequest">
+                        <PropertyRef Name="AppId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_AppToRequest">
+                        <PropertyRef Name="AppId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="RequestToHold" sap:content-version="1">
+                <End Type="PIQ_REQUEST_SRV.Request" Multiplicity="*" Role="FromRole_RequestToHold"/>
+                <End Type="PIQ_REQUEST_SRV.Hold" Multiplicity="*" Role="ToRole_RequestToHold"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_RequestToHold">
+                        <PropertyRef Name="AppId"/>
+                        <PropertyRef Name="ContextId"/>
+                        <PropertyRef Name="DecisionId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_RequestToHold">
+                        <PropertyRef Name="AppId"/>
+                        <PropertyRef Name="ContextId"/>
+                        <PropertyRef Name="DecisionId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="PIQ_REQUEST_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Tabs_ConfigSet" EntityType="PIQ_REQUEST_SRV.Tabs_Config" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="RequestSet" EntityType="PIQ_REQUEST_SRV.Request" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="HoldSet" EntityType="PIQ_REQUEST_SRV.Hold" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="FeeCalcDetailsSet" EntityType="PIQ_REQUEST_SRV.FeeCalcDetails" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="Req_ConfigSet" EntityType="PIQ_REQUEST_SRV.Req_Config" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="RequestToHoldSet" Association="PIQ_REQUEST_SRV.RequestToHold" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="RequestSet" Role="FromRole_RequestToHold"/>
+                    <End EntitySet="HoldSet" Role="ToRole_RequestToHold"/>
+                </AssociationSet>
+                <AssociationSet Name="AppToRequestSet" Association="PIQ_REQUEST_SRV.AppToRequest" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Req_ConfigSet" Role="FromRole_AppToRequest"/>
+                    <End EntitySet="RequestSet" Role="ToRole_AppToRequest"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="https://rde-fiori.dispatcher.neo.ondemand.com/destinations/EMICLNT800/sap/opu/odata/sap/PIQ_REQUEST_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="https://rde-fiori.dispatcher.neo.ondemand.com/destinations/EMICLNT800/sap/opu/odata/sap/PIQ_REQUEST_SRV/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

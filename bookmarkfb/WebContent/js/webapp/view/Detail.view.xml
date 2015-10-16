@@ -1,0 +1,38 @@
+<mvc:View controllerName="publicservices.her.myrequests.controller.Detail" xmlns:core="sap.ui.core"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m">
+	<semantic:DetailPage busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}" id="page" navButtonPress="onNavBack"
+		showNavButton="{device>/system/phone}" title="{REQUEST_CONFIG>/0/AppDesc}">
+		<semantic:content>
+			<core:ExtensionPoint name="detailViewObjHeaderExt">
+				<ObjectHeader id="objectHeader" title="{Field06}">
+					<statuses>
+						<ObjectStatus state="{ path:'Status', formatter:'.formatter.getStatus' }" text="{Field04}"/>
+					</statuses>
+					<attributes>
+						<core:ExtensionPoint name="detailViewObjAttributeExt">
+							<ObjectAttribute text="{Field05}"/>
+							<ObjectAttribute text="{Field01}"/>
+							<!--<ObjectAttribute text="{ parts: [{path:'Field01'}, {path:'Field02'}], formatter:'.formatter.concatStr' }"/>
+-->							<!--<ObjectAttribute text="{ path:'Field03', formatter:'.formatter.getDueDate' }" />-->
+							<ObjectAttribute text="{Field03}"/>
+						</core:ExtensionPoint>
+						<core:ExtensionPoint name="detailViewObjCustomAttributeExt"/>
+					</attributes>
+				</ObjectHeader>
+			</core:ExtensionPoint>
+			<core:ExtensionPoint name="detailViewCustomContentExt"/>
+			<IconTabBar id="idIconTabBar" select="onDetailSelect"></IconTabBar>
+		</semantic:content>
+		<semantic:customFooterContent>
+			<core:ExtensionPoint name="detailViewFooterExt">
+				<Button id="acceptBtn" press="onAcceptChangeProgramConfirmMsg" visible="{parts: [{path:'ContextId'}, {path:'Status'}], formatter:'.formatter.handleAcceptBtnVisibility'}" text="{i18n>acceptBtnLbl}" />
+				<Button id="registerBtn" press="onRegisterChangeProgramMsg"  visible="{parts: [{path:'ContextId'}, {path:'Status'}], formatter:'.formatter.handleRegisterBtnVisibility'}" text="{i18n>registerBtnLbl}" />
+				<Button id="docSubmitBtn" press="submitDocumentsConfirmMsg" text="{i18n>submitBtnLbl}"
+					visible="{path:'detailView>/status', formatter:'.formatter.handleDocSubmitBtnVisible'}"/>
+				<Button id="withdrawBtn" press="withdrawRequestConfirmMsg" text="{i18n>withdrawBtnLbl}"
+					visible="{path:'detailView>/status', formatter:'.formatter.handleWithdrawBtnVisible'}"/>
+			</core:ExtensionPoint>
+			<core:ExtensionPoint name="detailViewCustomFooterExt"/>
+		</semantic:customFooterContent>
+	</semantic:DetailPage>
+</mvc:View>

@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog title="{i18n>masterSearchPlaceholder}"
+		class="sapUiPopupWithPadding" items="{courseOffering>courselist}"
+		search="handleValueHelpSearch" confirm="onCourseSelected" cancel="handleCourseDialogClose">
+		<StandardListItem type="Active" title="{courseOffering>COURSENAME}"
+			data="{key:'{courseOffering>COURSEVALUE}'}"></StandardListItem>
+	</SelectDialog>
+</core:FragmentDefinition>

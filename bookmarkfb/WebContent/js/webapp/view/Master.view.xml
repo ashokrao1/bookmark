@@ -1,0 +1,99 @@
+<mvc:View controllerName="publicservices.her.myrequests.controller.Master" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns="sap.m">
+	<semantic:MasterPage id="page" navButtonPress="onNavBack" showNavButton="false" title="{masterView>/title}">
+		<semantic:subHeader>
+			<Bar id="headerBar">
+				<contentMiddle>
+					<SearchField id="searchField" search="onSearch" showRefreshButton="true" tooltip="{i18n>masterSearchTooltip}"
+						width="100%"></SearchField>
+				</contentMiddle>
+			</Bar>
+		</semantic:subHeader>
+		<semantic:content>
+		 <core:ExtensionPoint name="masterViewContentExt" >
+			<PullToRefresh id="pullToRefresh" refresh="onRefresh" visible="{device>/support/touch}"/>
+			<!-- For client side filtering add this to the items attribute:  parameters: {operationMode: 'Client'}}" -->
+<!--			<List
+					id="list"
+					items="{
+						path: '/RequestSet',
+						sorter: {
+							path: 'Field01',
+							descending: false
+							},
+						
+						groupHeaderFactory: '.createGroupHeader'
+					}"
+					busyIndicatorDelay="{masterView>/delay}"
+					noDataText="{masterView>/noDataText}"
+					mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+					growing="true"
+					growingThreshold="10"
+					growingScrollToLoad="true"
+					updateFinished="onUpdateFinished"
+					select="onSelect">
+				<infoToolbar>
+					<Toolbar
+							active="true"
+							id="filterBar"
+							visible="{masterView>/isFilterBarVisible}"
+							press="onOpenViewSettings">
+						<Title
+								id="filterBarLabel"
+								text="{masterView>/filterBarLabel}" />
+					</Toolbar>
+				</infoToolbar>
+				<items>
+				<ObjectListItem
+							type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}"
+							press="onSelect"
+							title="{Field06}">
+							<firstStatus>
+                                <ObjectStatus
+                                    text="{Field04}"
+                                    state="{Success}" />
+                            </firstStatus>
+                            <attributes>
+                                <ObjectAttribute text="{Field05}" />
+        					    <ObjectAttribute text="{ parts: [{path:'Field01'}, {path:'Field02'}], formatter:'.formatter.concatStr' }" />
+        					    <ObjectAttribute text="{ path:'Field03', formatter:'.formatter.getDueDate' }" />
+        				</attributes>
+					</ObjectListItem>
+				</items>
+			</List>-->
+		</core:ExtensionPoint>
+		<core:ExtensionPoint name="masterViewCustomContentExt" />
+		</semantic:content>
+       <!-- <semantic:addAction>
+			<semantic:AddAction text="{i18n>createNewRequest}" press="onCreatePress"/>
+		</semantic:addAction>-->
+		<semantic:customFooterContent>
+			<core:ExtensionPoint name="masterViewFooterExt" >		
+					<Select
+						id="groupSelect"
+						change="handleGroup"
+						tooltip="{i18n>groupLbl}"
+						icon="sap-icon://group-2"
+						type="IconOnly"
+						selectedKey="None"
+						autoAdjustWidth="true" >
+						<core:ExtensionPoint name="masterViewGroupExt">
+							<core:Item
+								key="ContextId"
+								text="{i18n>MasterGroupRequestType}"/>
+							<core:Item
+								key="Status"
+								text="{i18n>MasterGroupStatus}"/>
+							<core:Item
+								key="None"
+								text="{i18n>MasterGroupNone}"/>
+						</core:ExtensionPoint>
+						<core:ExtensionPoint name="masterViewCustomGroupExt" />
+					</Select>
+					<Button text="{i18n>createNewRequest}" tooltip="{i18n>createNewRequest}" press="onCreatePress"/>
+				</core:ExtensionPoint>
+				<core:ExtensionPoint name="masterViewCustomFooterExt" />
+		</semantic:customFooterContent>
+	</semantic:MasterPage>
+
+</mvc:View>

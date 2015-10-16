@@ -1,0 +1,83 @@
+<mvc:View
+    controllerName="publicservices.her.myrequests.controller.GeneralTab"
+       xmlns:l="sap.ui.layout"
+       xmlns:mvc="sap.ui.core.mvc"
+       xmlns:f="sap.ui.layout.form"
+       xmlns="sap.m"
+       xmlns:core="sap.ui.core">
+       <l:Grid
+    defaultSpan="L12 M12 S12"
+    width="auto" class="sapUiTinyMargin noBottomMarginGrid">
+    <l:content>
+       
+    
+      <f:Form id="FormChange354"
+        minWidth="1024"
+        class= "genralForm"
+        maxContainerCols="2"
+        formContainers='{GeneralSet}'
+        editable="true">
+        <f:layout >
+         <f:ResponsiveGridLayout
+              
+            labelSpanL="4"
+            labelSpanM="4"
+            emptySpanL="5"
+            emptySpanM="5"
+            columnsL="1"
+            columnsM="1" />
+        </f:layout>
+        <f:formContainers>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="{i18n>Reason}" design="Bold" visible="{path:'Reason', formatter:'.formatter.showField'}" >
+                <f:fields>
+                  <Text text='{Reason}'></Text>
+                </f:fields>
+              </f:FormElement >
+                       <f:FormElement label="{i18n>AppNumber}" design="Bold" visible="{path:'FormSubmId', formatter:'.formatter.showField'}">
+                <f:fields>
+                  <Text text='{FormSubmId}'></Text>
+                </f:fields>
+              </f:FormElement>
+              <f:FormElement label="{i18n>Note}" design="Bold" visible="{path:'Note', formatter:'.formatter.showField'}">
+                <f:fields>
+                  <Text text='{Note}'></Text>
+                </f:fields>
+              </f:FormElement>
+            </f:formElements>
+          </f:FormContainer>
+        </f:formContainers>
+      </f:Form>
+      <f:Form 
+       minWidth="1024"
+      maxContainerCols="2"
+      class= "genralForm"
+      editable="true">
+        <f:layout>
+          <f:ResponsiveGridLayout
+            labelSpanL="4"
+            labelSpanM="4"
+            emptySpanL="5"
+            emptySpanM="5"
+            columnsL="1"
+            columnsM="1"/>
+        </f:layout>
+        <f:formContainers >
+          <f:FormContainer 
+          formElements='{AssociatedStudyOfferSet}'>
+            <f:formElements>
+              <f:FormElement label="{StudyOfferFieldName}" design="Bold" visible="{path:'StudyOfferText', formatter:'.formatter.showField'}" >
+                <f:fields>
+                  <Text text='{StudyOfferText}'></Text>
+                </f:fields>
+              </f:FormElement >
+            </f:formElements>
+          </f:FormContainer>
+        </f:formContainers>
+      </f:Form>
+    </l:content>
+    </l:Grid>
+    <!--<mvc:JSView  viewName="publicservices.her.myrequests.view.formviews.QuestionLayout" displayBlock="true" height="100%"/> -->
+       
+</mvc:View>

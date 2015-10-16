@@ -1,0 +1,16 @@
+<mvc:View
+		controllerName="publicservices.her.myrequests.controller.BaseController"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns="sap.m">
+
+	<MessagePage
+			id="page"
+			title="{REQUEST_CONFIG>/0/AppDesc}"
+			text="{i18n>noObjectFoundText}"
+			icon="{sap-icon://product}"
+			description=""
+			showNavButton="{device>/system/phone}"
+			navButtonPress="onNavBack">
+	</MessagePage>
+
+</mvc:View>

@@ -1,0 +1,93 @@
+<mvc:View controllerName="publicservices.her.myrequests.controller.CreateRequest"
+	xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<semantic:DetailPage id="createRequest"
+		navButtonPress="onNavBack" showNavButton="{device>/system/phone}"
+		title="{REQUEST_CONFIG>/0/AppDesc}" busy="{detailView>/busy}"
+		busyIndicatorDelay="{detailView>/delay}">
+
+		<semantic:content>
+			<!--place the first form - select box with request Type ! -->
+			<f:SimpleForm id="requestTypeForm" minWidth="1024"
+				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+				title="{i18n>requestInfo}" labelSpanL="4" labelSpanM="4" emptySpanL="1"
+				emptySpanM="1" columnsL="1" columnsM="1" class="editableForm">
+				<f:content>
+					<Label text="{i18n>typeOfRequest}" required='true' />
+					<ComboBox id="reqTypeSelect"
+						items="{path:'REQUEST_CONFIG>/',filters:[{path:'CreateOptionInd',operator : 'EQ',value1:'X'}]}"
+						width="100%" selectionChange="onRequestTypeSelection">
+						<core:Item key="{REQUEST_CONFIG>ContextId}" text="{REQUEST_CONFIG>ContextDesc}" />
+					</ComboBox>
+
+				</f:content>
+			</f:SimpleForm>
+
+
+			<f:Form id="FormChange354" minWidth="1024" maxContainerCols="2"
+				visible="false" editable="true">
+				<f:title>
+					<core:Title text="{i18n>selectCourseOffering}" />
+				</f:title>
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanL="4"
+						labelSpanM="4" emptySpanL="1" emptySpanM="1" columnsL="1"
+						columnsM="1" />
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer formElements="{courseOffering>/courseOffering}">
+						<f:formElements>
+							<f:FormElement>
+								<f:label>
+									<Label text="{courseOffering>label}" required="true" />
+								</f:label> 
+								<f:fields>
+									<Input value="{courseOffering>text}" change="onChangingCourseSelection"
+										showValueHelp="true" valueHelpOnly="true" valueHelpRequest="onChangeOfCourseOffering" />
+									<!-- <ComboBox items="{path:'courseOffering>courselist'}"> <core:Item 
+										key="{courseOffering>COURSEVALUE}" text="{courseOffering>COURSENAME}" /> 
+										</ComboBox> -->
+								</f:fields>
+							</f:FormElement>
+
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+
+
+			<IconTabBar id="FormIconTabBar" visible="false" upperCase="false" select="onTabSelect"
+				expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter key="form" text="{i18n>createReqFormTab}">
+						<mvc:JSView id="edit"
+							viewName="publicservices.her.myrequests.view.formviews.QuestionLayout"
+							displayBlock="true" height="100%" />
+
+					</IconTabFilter>
+					<IconTabFilter key="attachments" text="{i18n>createReqAttTab}">
+						<mvc:JSView id="documentForm"
+							viewName="publicservices.her.myrequests.view.formviews.DocumentForm"
+							displayBlock="true" height="100%" />
+
+					</IconTabFilter>
+
+				</items>
+			</IconTabBar>
+
+			<!-- place the GFD form and give the proper reference ! -->
+
+			<!-- place the GFD form and give the proper reference ! -->
+
+		</semantic:content>
+
+		<semantic:customFooterContent>
+			<Button text="{i18n>requestSubmit}" press="submitForm" />
+			<Button text="{i18n>requestCancel}" press="onCancelConfirm" />
+		</semantic:customFooterContent>
+
+	</semantic:DetailPage>
+
+</mvc:View>

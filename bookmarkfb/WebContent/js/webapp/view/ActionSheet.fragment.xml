@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ActionSheet showCancelButton="true"
+		placement="Bottom" buttons="{language>/languages}">
+		<buttons>
+			<Button text="{language>LangDes}" press="selectLanguage">
+            <customData>
+                <core:CustomData key="langKey" value="{language>Lang}" />
+             </customData>
+			</Button>
+		</buttons>
+	</ActionSheet>
+</core:FragmentDefinition>

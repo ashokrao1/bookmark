@@ -1,0 +1,87 @@
+html,body,#app {
+	height: 100%;
+}
+
+#header {
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 5px;
+}
+
+.item-bookmark {
+	color: gold;
+}
+
+.search {
+	width: 100%;
+	margin: 5px 0;
+	height: 40px;
+	font-size: larger;
+}
+
+section {
+	width: 100%;
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+	height: -moz-calc(100% - 120px);
+	height: -webkit-calc(100% - 120px);
+	height: calc(100% - 120px);
+}
+
+div.left {
+	width: 30%;
+	resize: both;
+	background-color: #eeeeee;
+	height: 100%;
+	overflow-y: scroll;
+}
+
+ul.searchlist {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.item-bookmark {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+ul.searchlist>li {
+	padding: 5px;
+	border: 1px solid #e5e5e5;
+	position: relative;
+}
+
+div.right {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	box-flex: 1;
+	height: 100%;
+	overflow-y: scroll;
+}
+
+.tiles {
+	display: inline-block;
+	text-align: center;
+	width: 140px; height : 115px;
+	border: 1px solid #e5e5e5;
+	position: relative;
+	padding: 5px;
+	margin: 5px;
+	height: 115px;
+}
+
+.tiles>p {
+	position: absolute;
+	bottom: 0;
+}
+.unbookmark{
+	position: absolute;
+	top:0;
+	right: 0;
+	color: gold;
+}

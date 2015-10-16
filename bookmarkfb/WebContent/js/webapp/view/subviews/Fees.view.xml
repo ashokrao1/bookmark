@@ -1,0 +1,194 @@
+<mvc:View
+	controllerName="publicservices.her.myrequests.controller.Fees"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<core:ExtensionPoint name="feeViewExt" >	
+	<l:Grid
+    defaultSpan="L12 M12 S12"
+    width="auto">
+    <l:content>
+    <core:ExtensionPoint name="feeViewFormExt" >	
+      <f:Form id="FormChange354">
+        <f:title>
+          <core:Title text="{i18n>feeTitle}"/>
+        </f:title>
+        <f:layout>
+          <f:ResponsiveGridLayout
+            labelSpanL="4"
+            labelSpanM="4"
+            emptySpanL="5"
+            emptySpanM="5"
+            columnsL="1"
+            columnsM="1" />
+        </f:layout>
+        <f:formContainers>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="{i18n>TotalFees}" design="Bold" visible="{path:'sumFeeModel>/sumAmt', formatter:'.formatter.showField'}" >
+                <f:fields>
+                  <ObjectNumber
+							number="{
+								parts:[{path:'sumFeeModel>/sumAmt'},{path:'sumFeeModel>/currency'}],
+								type: 'sap.ui.model.type.Currency',
+								formatOptions: {showMeasure: false}
+							}"
+							unit="{sumFeeModel>/currency}" />
+                </f:fields>
+              </f:FormElement >
+              <f:FormElement label="{i18n>PendingAmount}" design="Bold" visible="{path:'sumFeeModel>/sumPen', formatter:'.formatter.showField'}">
+                <f:fields>
+                  <ObjectNumber
+							number="{
+								parts:[{path:'sumFeeModel>/sumPen'},{path:'sumFeeModel>/currency'}],
+								type: 'sap.ui.model.type.Currency',
+								formatOptions: {showMeasure: false}
+							}"
+							unit="{sumFeeModel>/currency}" />
+                </f:fields>
+              </f:FormElement>
+	      		<f:FormElement class="questionLabel" label="{i18n>DueDate}" design="Bold" visible="{path:'sumFeeModel>/DueDate', formatter:'.formatter.showField'}">
+	                <f:fields>
+	                  <Text
+							text="{path:'sumFeeModel>/DueDate', type : 'sap.ui.model.type.Date',
+						        formatOptions: {
+						          style : 'medium'
+						        }}" />
+	                </f:fields>
+		                
+
+              </f:FormElement>
+
+            </f:formElements>
+          </f:FormContainer>
+        </f:formContainers>
+      </f:Form>
+      </core:ExtensionPoint>
+      <core:ExtensionPoint name="feeViewCustomFormExt" />
+    </l:content>
+    </l:Grid>
+	
+	<Table 
+	    id="feeItemsList"
+		width="auto"
+		items="{FeeSet}"
+		updateStarted="onListUpdateStarted"
+		updateFinished="onListUpdateFinished"
+		noDataText="{i18n>feesNoDataText}"
+		class="sapUiResponsiveMargin">
+		<!--<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>feeTitle}" level="H2"/>
+			</Toolbar>
+		</headerToolbar>-->
+		<columns>
+			<core:ExtensionPoint name="feeViewColumnExt" >	
+		        <Column>
+		            <Text text="{i18n>FeeType}" />
+	            </Column>
+	            <Column hAlign="Right">
+		            <Text text="{i18n>totalAmount}" />
+	            </Column>
+	            <Column hAlign="Right">
+		            <Text text="{i18n>PendingAmount}" />
+	            </Column>
+	           <!-- <Column>
+		            <Text text="{i18n>DueDate}" />
+	            </Column>-->
+	             <Column hAlign="Right">
+		            <Text text="{i18n>FeeStatus}" />
+	            </Column>
+	            <core:ExtensionPoint name="feeViewCustomColumnExt" />	
+	         </core:ExtensionPoint>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+				<core:ExtensionPoint name="feeViewCellsExt" >	
+					<ObjectIdentifier
+						text="{FeeTypeText}"/>
+					<ObjectNumber
+							number="{
+								parts:[{path:'Amount'},{path:'Currency'}],
+								type: 'sap.ui.model.type.Currency',
+								formatOptions: {showMeasure: false}
+							}"
+							unit="{Currency}"
+							class="numberNotBold" />
+					<ObjectNumber
+							number="{
+								parts:[{path:'PendingAmt'},{path:'Currency'}],
+								type: 'sap.ui.model.type.Currency',
+								formatOptions: {showMeasure: false}
+							}"
+							unit="{Currency}"
+							class="numberNotBold" />		
+					<!--<Text
+						text="{path:'DueDate', type : 'sap.ui.model.type.Date',
+					        formatOptions: {
+					          style : 'long'
+					        }}" />	-->		
+					<Text
+						text="{StatusText}" />
+				<core:ExtensionPoint name="feeViewCustomCellsExt" />		
+				</core:ExtensionPoint>		
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+
+	<!--<l:HorizontalLayout xmlns="sap.ui.layout"
+		allowWrapping="false" class="sapUiResponsiveMargin" visible="{path:'sumFeeModel>/note', formatter:'.formatter.showNote'}">
+			<content>
+			    <Label xmlns="sap.m"
+			    	design="Bold"
+			    	text="{i18n>Note}"
+			    	required="false">
+			    </Label>
+			    
+			    <Text xmlns="sap.m"
+			    	text="{path:'sumFeeModel>/note', formatter:'.formatter.formatNote'}">
+			    </Text>
+			</content>
+	</l:HorizontalLayout>-->
+	
+	<l:Grid
+    defaultSpan="L12 M12 S12"
+    width="auto">
+    <l:content>
+    <core:ExtensionPoint name="feeViewNoteExt" >	
+      <f:Form 
+        minWidth="1024"
+        maxContainerCols="2"
+        visible="{path:'sumFeeModel>/note', formatter:'.formatter.showField'}"
+        >
+        <f:layout>
+          <f:ResponsiveGridLayout
+            labelSpanL="1"
+            labelSpanM="1"
+            emptySpanL="1"
+            emptySpanM="1"
+            columnsL="1"
+            columnsM="1" />
+        </f:layout>
+        <f:formContainers>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="{i18n>Note}" design="Bold" >
+                <f:fields>
+                  <Text xmlns="sap.m" text="{sumFeeModel>/note}" textAlign="Begin"></Text>
+                </f:fields>
+              </f:FormElement>
+
+            </f:formElements>
+          </f:FormContainer>
+        </f:formContainers>
+      </f:Form>
+    </core:ExtensionPoint>
+    </l:content>
+    </l:Grid>
+     <core:ExtensionPoint name="feeViewCustomNoteExt" />	
+	</core:ExtensionPoint>	
+</mvc:View>

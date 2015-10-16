@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta charset="UTF-8">
+	<title>My Requests </title>
+	<script id="sap-ui-bootstrap" 
+	        src="resources/sap-ui-core.js" 
+	        data-sap-ui-libs="sap.m" 
+	        data-sap-ui-theme="sap_bluecrystal" 
+	        data-sap-ui-xx-bindingSyntax="complex" 
+	        data-sap-ui-resourceroots='{"publicservices.her.myrequests": "./"}'>
+	</script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script>
+		var oLocale = sap.ui.getCore().getConfiguration().getFormatLocale();
+		var oBundle = jQuery.sap.resources({
+			url: jQuery.sap.getModulePath("publicservices.her.myrequests.i18n.i18n", ".properties"),
+			locale: oLocale
+		});
+		sap.ushell = {
+			resources: {
+				i18n: oBundle
+			}
+		};
+		sap.ui.getCore().attachInit(function() {
+			new sap.m.Shell({
+				app: new sap.ui.core.ComponentContainer({
+					height: "100%",
+					name: "publicservices.her.myrequests"
+				})
+			}).placeAt("content");
+		});
+	</script>
+<script src='https://rde-fiori.dispatcher.neo.ondemand.com/plugins/pluginrepository/hybrid/cordovafacade/cordova.js' data-original-url='index.html'></script>
+<style>#interactive.viewport video{width:320px;height:240px;}
+#interactive.viewport .drawingBuffer{width:320px;height:240px;position:absolute;}</style></head>
+
+<body class="sapUiBody" id="content"> </body>
+
+</html>

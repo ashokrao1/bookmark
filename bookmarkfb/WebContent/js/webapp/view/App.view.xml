@@ -1,0 +1,22 @@
+<mvc:View
+		controllerName="publicservices.her.myrequests.controller.App"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:u="sap.ui.unified"
+		displayBlock="true"
+		busy="{appView>/busy}"
+		busyIndicatorDelay="{appView>/delay}"
+		xmlns="sap.m">
+		<u:Shell id="myShell" icon="{configuration>/LOGO}">
+    		<u:headEndItems>
+    			<u:ShellHeadItem icon="sap-icon://log" tooltip="Logoff"
+    				press="handleLogoffPress" />
+    		</u:headEndItems>
+    		<u:user>
+    			<u:ShellHeadUserItem image="sap-icon://person-placeholder"
+    				username="{configuration>/USERNAME}" press="handleOpen" />
+    		</u:user>
+    		<u:content>
+            	<SplitApp id="idAppControl" />
+		    </u:content>
+	    </u:Shell>
+</mvc:View>

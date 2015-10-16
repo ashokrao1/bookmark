@@ -1,0 +1,51 @@
+.listTableHide{
+    display: none;
+}
+
+.reqDocSubmitBtn{
+	float:right;
+}
+
+.docDetails{
+    font-size:small;
+    min-height:0rem !important;
+    padding:0 !important;
+}
+
+.FileHBox{
+    width: 100%;
+}
+
+.FileHBox > div:nth-child(3),.FileHBox > div:nth-child(4){
+    float: right;
+}
+
+.WarningIcon{
+   font-size:1rem;
+   width:2rem;
+   margin-top:0.5rem;
+}
+
+.objectStatusContainer.sapMObjStatus, .docQuestionLabel{
+	  white-space: normal;
+	  word-break: break-word;
+}
+
+.readOnlyDate .sapMInputValHelp{
+	display: none;
+}
+
+.readOnlyDate input{
+	border: 0;
+}
+
+.numberNotBold>.sapMObjectNumberText{
+	    font-weight: normal;
+}
+
+.genralForm .sapUiFormResGridCont{
+	padding:0;
+}
+.noBottomMarginGrid>div{ 
+	 margin-bottom:0 !important;
+}

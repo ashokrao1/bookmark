@@ -1,0 +1,11 @@
+<mvc:View
+	controllerName="publicservices.her.myrequests.controller.RequiredDocuments"
+	xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns="sap.m">
+
+	<mvc:JSView viewName="publicservices.her.myrequests.view.formviews.DocumentUploadLayout" displayBlock="true" height="100%" />
+	<Label textAlign="Center" text="{i18n>requiredDocumentsNoDataText}" width="100%" visible="{detailView>/enableReqDocNoDataText}"  />
+</mvc:View>

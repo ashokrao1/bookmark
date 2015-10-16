@@ -1,0 +1,49 @@
+<mvc:View
+	controllerName="publicservices.her.myrequests.controller.Holds"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<core:ExtensionPoint name="HoldsViewExt" >	
+	<Table id="lineItemsList"
+					width="auto"
+					items="{HoldSet}"
+					updateFinished="onListUpdateFinished"
+					noDataText="{i18n>detailLineItemTableNoDataText}"
+					busyIndicatorDelay="{detailView>/lineItemTableDelay}"
+					class="sapUiResponsiveMargin">
+				<headerToolbar>
+					<Toolbar id="lineItemsToolbar">
+						<Title
+								id="lineItemsHeader"
+								text="{detailView>/lineItemListTitle}"/>
+					</Toolbar>
+				</headerToolbar>
+		<columns>
+	            <core:ExtensionPoint name="HoldsViewColumnExt">
+		            <Column>
+			            <Text text="{i18n>description}" />
+		            </Column>
+		             <Column>
+			            <Text text="{i18n>validity}" />
+		            </Column>
+	            </core:ExtensionPoint>
+	            <core:ExtensionPoint name="HoldsViewCustomColumnExt" />
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<core:ExtensionPoint name="HoldsViewCellsExt">
+						<Text
+							text="{Description}" />
+						<Text
+							text="{Validity}" />
+					</core:ExtensionPoint>	
+					<core:ExtensionPoint name="HoldsViewCustomCellsExt" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	</core:ExtensionPoint>
+	<core:ExtensionPoint name="HoldsCustomViewExt" />	
+</mvc:View>
